@@ -1,334 +1,293 @@
-
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alquiler Cuatrimotos Medellín | Aventura al Límite</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Configuración de colores Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            dark: '#111827',
-                            green: '#22c55e',       /* Nuevo color principal */
-                            greenHover: '#16a34a',  /* Hover del nuevo color */
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
+    <title>Alquiler Cuatrimotos Medellín - Aventura Extrema</title>
     <style>
-        /* Estilos base para la imagen hero con gradiente */
-        .hero-bg {
-            background-image: linear-gradient(rgba(17, 24, 39, 0.7), rgba(17, 24, 39, 0.95)), url('https://images.unsplash.com/photo-1629851605330-01c0c169df2b?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        /* Estilos Generales y Tema Oscuro */
+        :root {
+            --bg-color: #121212;
+            --text-color: #f4f4f4;
+            --accent-green: #2ecc71;
+            --accent-green-hover: #27ae60;
+            --dark-gray: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navegación */
+        header {
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--accent-green);
+        }
+
+        /* Sección Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1675428604186-a165487f857c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #ccc;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366; /* Color oficial de WhatsApp */
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+        }
+
+        /* Sección de Galería */
+        .gallery-section {
+            padding: 5rem 5%;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--accent-green);
+            text-transform: uppercase;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid #333;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Sección de Reserva (Formulario) */
+        .booking-section {
+            background-color: var(--dark-gray);
+            padding: 5rem 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .booking-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .booking-form {
+            background-color: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #ddd;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            background-color: #1e1e1e;
+            color: white;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-green);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #0a0a0a;
+            color: #777;
+            border-top: 1px solid #222;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
-<body class="bg-brand-dark text-white font-sans antialiased">
+<body>
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-brand-dark/90 backdrop-blur-sm border-b border-gray-800 transition-all">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0 flex items-center gap-3">
-                    <i class="fa-solid fa-motorcycle text-brand-green text-3xl"></i>
-                    <span class="font-bold text-xl tracking-tight uppercase">Cuatrimotos <span class="text-brand-green">Medellín</span></span>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#inicio" class="hover:text-brand-green px-3 py-2 rounded-md text-sm font-medium transition">Inicio</a>
-                        <a href="#galeria" class="hover:text-brand-green px-3 py-2 rounded-md text-sm font-medium transition">El Plan</a>
-                        <a href="#experiencia" class="hover:text-brand-green px-3 py-2 rounded-md text-sm font-medium transition">La Experiencia</a>
-                        <a href="#reserva" class="bg-brand-green hover:bg-brand-greenHover text-white px-5 py-2 rounded-full text-sm font-bold transition shadow-lg shadow-green-500/30">Reservar Ahora</a>
-                    </div>
-                </div>
+    <header>
+        <div class="logo">ACMI <span>Medellín</span></div>
+    </header>
+
+    <section class="hero">
+        <h1>El Plan Perfecto</h1>
+        <p>Vive la adrenalina al máximo. Rutas extremas, naturaleza y la mejor experiencia todoterreno a las afueras de Medellín.</p>
+        <a href="#reservar" class="btn-whatsapp">Reserva tu Aventura</a>
+    </section>
+
+    <section class="gallery-section">
+        <h2>Experiencias Reales</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1675428604186-a165487f857c?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" alt="Velocidad en caminos de tierra">
             </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center pt-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <span class="text-brand-green font-bold tracking-widest uppercase text-sm mb-4 block">Descubre la naturaleza</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
-                Siente la Adrenalina en <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-emerald-400">Medellín</span>
-            </h1>
-            <p class="mt-4 max-w-2xl text-xl text-gray-300 mx-auto mb-10 drop-shadow-md">
-                Rutas extremas, paisajes inolvidables y la mejor flota de cuatrimotos. Escapa de la rutina y vive una aventura todoterreno única en Antioquia.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#reserva" class="bg-brand-green hover:bg-brand-greenHover text-white font-bold py-4 px-8 rounded-full transition-all transform hover:scale-105 shadow-xl shadow-green-500/40 text-lg flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-xl"></i> Reservar por WhatsApp
-                </a>
-                <a href="https://www.instagram.com/alquiler_cuatrimotos_medellin/" target="_blank" class="bg-gray-800 hover:bg-gray-700 border border-gray-700 text-white font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-instagram text-xl"></i> Ver Instagram
-                </a>
+            <div class="gallery-item">
+                <img src="https://thebalipackage.com/wp-content/uploads/2024/06/Kuber-atv-bali-quad-bike-ride.jpg" alt="Rutas por agua y cascadas">
+            </div>
+            <div class="gallery-item">
+                <img src="https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=689761992962681" alt="Recorridos en grupo y paisajes">
             </div>
         </div>
     </section>
 
-    <!-- Instagram Style Gallery Section -->
-    <section id="galeria" class="py-20 bg-brand-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-4xl md:text-5xl font-extrabold mb-2 uppercase tracking-tight">El <span class="text-brand-green">Plan</span></h2>
-                <p class="text-gray-400 text-lg mb-6">Barro, trochas y la mejor energía. Así se viven nuestras rutas.</p>
-                <div class="w-24 h-1 bg-brand-green mx-auto rounded-full mb-10"></div>
+    <section id="reservar" class="booking-section">
+        <h2>Agenda tu Parche</h2>
+        <form class="booking-form" id="wa-form" onsubmit="enviarWhatsApp(event)">
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" required placeholder="Tu nombre">
             </div>
-            
-            <!-- Grid estilo Instagram -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
-                <!-- Foto 1 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1596328546171-77e37b5fefea?q=80&w=800&auto=format&fit=crop" alt="Cuatrimoto en la montaña" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Foto 2 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1520653896582-7b003185de23?q=80&w=800&auto=format&fit=crop" alt="Grupo en cuatrimotos" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Foto 3 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1623880461877-33a7e4499dcb?q=80&w=800&auto=format&fit=crop" alt="Ruta por el bosque" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Foto 4 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1579737119107-73d7020bc8b6?q=80&w=800&auto=format&fit=crop" alt="Aventura Off-road" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Foto 5 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1610486047326-0e107fb1b5a2?q=80&w=800&auto=format&fit=crop" alt="Trochas en cuatrimoto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
-                <!-- Foto 6 -->
-                <div class="relative group aspect-square overflow-hidden rounded-lg bg-gray-800">
-                    <img src="https://images.unsplash.com/photo-1629851605330-01c0c169df2b?q=80&w=800&auto=format&fit=crop" alt="Pareja en cuatrimoto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <i class="fa-brands fa-instagram text-white text-3xl"></i>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="fecha">Fecha de Reserva</label>
+                <input type="date" id="fecha" required>
             </div>
-            
-            <div class="text-center mt-10">
-                <a href="https://www.instagram.com/alquiler_cuatrimotos_medellin/" target="_blank" class="inline-block border-2 border-brand-green text-brand-green hover:bg-brand-green hover:text-white font-bold py-3 px-8 rounded-full transition-all">
-                    Ver más en Instagram
-                </a>
+            <div class="form-group">
+                <label for="cantidad">Número de Cuatrimotos</label>
+                <input type="number" id="cantidad" min="1" max="20" required placeholder="Ej: 2">
             </div>
-        </div>
+            <div class="form-group">
+                <label for="tipo_ruta">Tipo de Ruta</label>
+                <select id="tipo_ruta">
+                    <option value="Principiante (1 hora)">Principiante (1 hora)</option>
+                    <option value="Aventura (2 horas)">Aventura Extrema (2 horas)</option>
+                    <option value="Tour Completo (Media tarde)">Tour Completo (Media tarde)</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-whatsapp" style="width: 100%;">Reservar por WhatsApp</button>
+        </form>
     </section>
 
-    <!-- Features Section -->
-    <section id="experiencia" class="py-20 bg-gray-900 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Por qué rodar con nosotros?</h2>
-                <div class="w-24 h-1 bg-brand-green mx-auto rounded-full"></div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Feature 1 -->
-                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-brand-green transition-colors text-center group">
-                    <div class="w-16 h-16 bg-gray-700 group-hover:bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6 transition-colors">
-                        <i class="fa-solid fa-map-location-dot text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Rutas Espectaculares</h3>
-                    <p class="text-gray-400">Recorridos por los mejores paisajes de la región, trochas, barro y miradores increíbles.</p>
-                </div>
-                <!-- Feature 2 -->
-                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-brand-green transition-colors text-center group">
-                    <div class="w-16 h-16 bg-gray-700 group-hover:bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6 transition-colors">
-                        <i class="fa-solid fa-shield-halved text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Máxima Seguridad</h3>
-                    <p class="text-gray-400">Equipos de protección completos, guías expertos y máquinas en perfecto estado mecánico.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="bg-gray-800 p-8 rounded-2xl border border-gray-700 hover:border-brand-green transition-colors text-center group">
-                    <div class="w-16 h-16 bg-gray-700 group-hover:bg-brand-green rounded-full flex items-center justify-center mx-auto mb-6 transition-colors">
-                        <i class="fa-solid fa-people-group text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Para Todos</h3>
-                    <p class="text-gray-400">Desde principiantes hasta expertos. Parejas, familias y grupos de amigos son bienvenidos.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reserva Form Section -->
-    <section id="reserva" class="py-24 bg-brand-dark relative overflow-hidden">
-        <!-- Decoración de fondo -->
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-green opacity-5 blur-3xl"></div>
-        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-emerald-500 opacity-5 blur-3xl"></div>
-
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl border border-gray-700">
-                <div class="text-center mb-10">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Agenda tu Aventura</h2>
-                    <p class="text-gray-400">Completa tus datos y finaliza la reserva directamente en nuestro WhatsApp.</p>
-                </div>
-
-                <form id="reservaForm" class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Nombre -->
-                        <div class="col-span-1 md:col-span-2">
-                            <label for="nombre" class="block text-sm font-medium text-gray-300 mb-2">Nombre Completo</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fa-regular fa-user text-gray-500"></i>
-                                </div>
-                                <input type="text" id="nombre" name="nombre" required placeholder="Ej: Juan Pérez"
-                                    class="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-brand-green text-white placeholder-gray-500 transition-colors">
-                            </div>
-                        </div>
-
-                        <!-- Fecha -->
-                        <div>
-                            <label for="fecha" class="block text-sm font-medium text-gray-300 mb-2">Fecha de la Reserva</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fa-regular fa-calendar text-gray-500"></i>
-                                </div>
-                                <input type="date" id="fecha" name="fecha" required
-                                    class="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-brand-green text-white placeholder-gray-500 transition-colors cursor-pointer">
-                            </div>
-                        </div>
-
-                        <!-- Cantidad -->
-                        <div>
-                            <label for="cantidad" class="block text-sm font-medium text-gray-300 mb-2">Número de Cuatrimotos</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <i class="fa-solid fa-motorcycle text-gray-500"></i>
-                                </div>
-                                <input type="number" id="cantidad" name="cantidad" min="1" max="20" required placeholder="Ej: 2"
-                                    class="w-full pl-10 pr-4 py-3 bg-gray-900 border border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-green focus:border-brand-green text-white placeholder-gray-500 transition-colors">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mensaje de Error (oculto por defecto) -->
-                    <div id="formError" class="hidden bg-red-500/20 border border-red-500 text-red-300 px-4 py-3 rounded-xl text-sm">
-                        Por favor completa todos los campos correctamente.
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="pt-4">
-                        <button type="submit" 
-                            class="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:scale-[1.02] shadow-xl shadow-green-500/20 text-lg flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            Confirmar Reserva por WhatsApp
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 border-t border-gray-800 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
-            <div class="flex items-center gap-3 mb-6">
-                <i class="fa-solid fa-motorcycle text-brand-green text-2xl"></i>
-                <span class="font-bold text-lg tracking-tight uppercase">Cuatrimotos Medellín</span>
-            </div>
-            <div class="flex space-x-6 mb-8">
-                <a href="https://www.instagram.com/alquiler_cuatrimotos_medellin/" target="_blank" class="text-gray-400 hover:text-brand-green transition-colors text-2xl">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-                <a href="#reserva" class="text-gray-400 hover:text-[#25D366] transition-colors text-2xl">
-                    <i class="fa-brands fa-whatsapp"></i>
-                </a>
-            </div>
-            <p class="text-gray-500 text-sm text-center">
-                &copy; 2026 Alquiler Cuatrimotos Medellín. Todos los derechos reservados. <br>
-                La aventura te espera.
-            </p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Alquiler Cuatrimotos Medellín. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Lógica de Reserva -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const form = document.getElementById('reservaForm');
-            const errorMsg = document.getElementById('formError');
+        // Establecer la fecha mínima en el selector de fecha al día de hoy
+        const hoy = new Date().toISOString().split('T')[0];
+        document.getElementById("fecha").setAttribute('min', hoy);
 
-            // Establecer fecha mínima de reserva (hoy)
-            const inputFecha = document.getElementById('fecha');
-            const hoy = new Date().toISOString().split('T')[0];
-            inputFecha.min = hoy;
+        function enviarWhatsApp(event) {
+            event.preventDefault(); // Evita que la página se recargue
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault(); // Evitar envío tradicional
+            // Número de WhatsApp del negocio (Reemplazar con el número real de Medellín, ej: 573001234567)
+            const numeroTelefono = "573000000000"; 
 
-                // Recoger datos
-                const nombre = document.getElementById('nombre').value.trim();
-                const fecha = document.getElementById('fecha').value;
-                const cantidad = document.getElementById('cantidad').value;
+            // Obtener los valores del formulario
+            const nombre = document.getElementById("nombre").value;
+            const fecha = document.getElementById("fecha").value;
+            const cantidad = document.getElementById("cantidad").value;
+            const tipoRuta = document.getElementById("tipo_ruta").value;
 
-                // Validación básica
-                if(!nombre || !fecha || !cantidad) {
-                    errorMsg.classList.remove('hidden');
-                    return;
-                }
-                errorMsg.classList.add('hidden');
+            // Crear el mensaje formateado
+            const mensaje = `¡Hola! Me gustaría hacer una reserva de cuatrimotos.%0A%0A*Detalles de la reserva:*%0A👤 *Nombre:* ${nombre}%0A📅 *Fecha:* ${fecha}%0A🛵 *Cantidad:* ${cantidad} cuatrimotos%0A🗺️ *Ruta:* ${tipoRuta}%0A%0A¿Me confirman disponibilidad por favor?`;
 
-                // Formatear la fecha para que sea más legible (opcional)
-                const fechaObj = new Date(fecha);
-                // Añadimos offset para evitar problemas de zona horaria al formatear
-                fechaObj.setMinutes(fechaObj.getMinutes() + fechaObj.getTimezoneOffset());
-                const opcionesFecha = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const fechaFormateada = fechaObj.toLocaleDateString('es-ES', opcionesFecha);
+            // Construir la URL de WhatsApp
+            const url = `https://wa.me/${numeroTelefono}?text=${mensaje}`;
 
-                // --- CONFIGURACIÓN DE WHATSAPP ---
-                // Aquí debes colocar el número de teléfono con código de país (sin el símbolo +)
-                // Ejemplo para Colombia: 57 y el número de celular
-                const numeroWhatsApp = '573000000000'; // EDITAR ESTE NÚMERO
-                
-                // Construir el mensaje predeterminado
-                const mensaje = `¡Hola! Vengo de la página web y me gustaría hacer una reserva. 🏍️💨\n\n` +
-                                `*Mis datos de reserva:*\n` +
-                                `👤 *Nombre:* ${nombre}\n` +
-                                `📅 *Fecha:* ${fechaFormateada}\n` +
-                                `🛵 *Número de cuatrimotos:* ${cantidad}\n\n` +
-                                `¿Tienen disponibilidad y cuáles son los pasos a seguir? ¡Gracias!`;
-
-                // Codificar la URL
-                const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
-
-                // Abrir en nueva pestaña
-                window.open(url, '_blank');
-            });
-        });
+            // Abrir WhatsApp en una nueva pestaña
+            window.open(url, '_blank');
+        }
     </script>
 </body>
 </html>
